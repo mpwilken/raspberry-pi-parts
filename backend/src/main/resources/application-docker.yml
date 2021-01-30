@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    hikari:
+      connection-test-query: select 1
+      maximum-pool-size: 5
+      minimum-idle: 300000
+    password: parts_password
+    username: parts_user
+    url: jdbc:postgresql://localhost:5432/parts
+  flyway:
+    baseline-on-migrate: true
+    checkLocation: true
+    enabled: true
+    locations: classpath:/db/migration/postgres
+    out-of-order: true
+    schemas: ${spring.datasource.username}
+    validate-on-migrate: true
+  jpa:
+    hibernate.ddl-auto: none
+    properties:
+      hibernate:
+        # To avoid "java.sql.SQLFeatureNotSupportedException: Method org.postgresql.jdbc.PgConnection.createClob() is not yet implemented." at startup
+        # Comes up as we use a new version of Postgres Driver
+        jdbc.lob.non_contextual_creation: true
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        show_sql: false

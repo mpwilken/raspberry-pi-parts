@@ -1,0 +1,13 @@
+version: '2.0'
+services:
+
+  dbpostgres:
+    image: postgres
+    volumes:
+      - ./images:/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: parts_user
+      POSTGRES_PASSWORD: parts_password
+      POSTGRES_DB: parts

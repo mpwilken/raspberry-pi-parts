@@ -1,0 +1,35 @@
+app.security:
+  cors:
+    exposed: Authorization, X-AUTH-TOKEN, APP-TOKEN-KEY, X-XSRF-TOKEN, Content-Type, Content-Disposition
+    headers: Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization, Access-Control-Allow-Origin, APP-TOKEN-KEY, X-XSRF-TOKEN
+    methods: HEAD, GET, POST, PUT, DELETE, PATCH, OPTIONS
+    origins:
+      - http://localhost:4200
+  urls:
+    unprotected:
+#      - "/**"
+      - "/api/version"
+      - "/favicon.ico"
+      - "/login"
+      - "/main*"
+      - "/polyfills*"
+      - "/runtime*"
+      - "/scripts*"
+      - "/styles*"
+      - "/ui/**"
+info.version: @project.version@
+management:
+  endpoint.health.show-details: always
+  endpoints.web.exposure.include: health,info,loggers
+  ## MULTIPART (MultipartProperties)
+  # Enable multipart uploads
+  servlet.multipart:
+    # Threshold after which files are written to disk.
+    file-size-threshold: 2KB
+    # Max file size.
+    max-file-size: 200MB
+    # Max Request Size
+    max-request-size: 215MB
+spring:
+  application.name: Raspberri Pi Parts
+  data.rest.base-path: /api

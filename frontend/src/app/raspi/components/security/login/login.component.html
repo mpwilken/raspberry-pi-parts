@@ -1,0 +1,16 @@
+<div class="content" role="main">
+    <div *ngIf="error" class="alert alert-danger">
+        There was a problem logging in. Please try again.
+    </div>
+    <form (submit)="signIn()" role="form">
+        <div class="form-group">
+            <label for="username">Username:</label> <input [(ngModel)]="credentials.username"
+                                                           autofocus class="form-control" id="username" name="username" type="text"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label> <input [(ngModel)]="credentials.password"
+                                                           class="form-control" id="password" name="password" type="password"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>

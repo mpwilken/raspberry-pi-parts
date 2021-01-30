@@ -1,0 +1,81 @@
+#!/bin/bash
+
+Black='\033[0;30m'
+Red='\033[0;31m'
+Green='\033[0;32m'
+Yellow='\033[0;33m'
+Blue='\033[0;34m'
+Purple='\033[0;35m'
+Cyan='\033[0;36m'
+White='\033[0;37m'
+NC='\033[0m'
+
+function get_module() {
+    local path=$1
+    while true; do
+        path=$(dirname $path)
+        if [ -f "$path/pom.xml" ]; then
+          echo "$path"
+          return
+        elif [[ "./" =~ "$path" ]]; then
+            return
+        fi
+    done
+}
+
+modules=()
+
+for file in $(git diff --name-only --cached \*.java); do
+    module=$(get_module "$file")
+    if [ "" != "$module" ] && [[ ! " ${modules[@]} " =~ " $module " ]]; then
+        modules+=("$module")
+    fi
+done
+
+if [ ${#modules[@]} -eq 0 ]; then
+    exit
+fi
+
+modules_arg=$(printf ",%s" "${modules[@]}")
+modules_arg=${modules_arg:1}
+
+export MAVEN_OPTS="-client
+  -XX:+TieredCompilation
+  -XX:TieredStopAtLevel=1
+  -Xverify:none"
+
+echo -e "${Green}>>>>>>>>>>> Running pre-commit hook <<<<<<<<<<<<<${NC}\n"
+
+pushd backend
+../mvnw checkstyle:check
+
+if [ $? -ne 0 ]; then
+    echo -e "\n\t${Red}CheckStyle failed. Run `${Yellow}./mvnw checkstyle:check${Red}` to re-check${NC}"
+    exit 1
+fi
+popd
+
+## Frontend validation
+
+echo -e "${Green}>>>>>>>>>>> Running pre-commit hook <<<<<<<<<<<<<${NC}\n"
+
+for focus in $(echo "fdescribe fit xit xdescribe"); do
+    FILES=$(git diff --staged -G"^\s*$focus\(" --name-only | wc -l)
+    if [ $FILES -gt 0 ]
+    then
+        echo -e "\n\t${Red}Check focused/ignored tests failed."
+        echo -e "${White}You forgot to remove a $focus in the following files: ${Yellow}\n"
+
+        git diff --staged --name-only -G"^\s*$focus\("
+
+        exit 1
+    fi
+done
+
+pushd frontend
+npm run lint
+if [ $? -ne 0 ]; then
+    echo -e "\n\t${Red}lint failed. Run \`${Yellow}npm run lint${Red}\` to re-check TS${NC}"
+    exit 1
+fi
+popd

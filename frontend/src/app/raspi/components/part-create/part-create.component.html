@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="part-heading">Edit Part</div>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && send()" class="part_create_form" novalidate>
+        <div class="form-group">
+            <label class="part_create__label_name" for="name">Name: </label>
+            <input #name="ngModel" [(ngModel)]="partCreateModel.name" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" class="form-control"
+                   id="name" name="name" required type="text"/>
+            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                <div *ngIf="name.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_cost" for="cost">Cost: </label>
+            <input #cost="ngModel" [(ngModel)]="partCreateModel.cost" [ngClass]="{ 'is-invalid': f.submitted && cost.invalid }" class="form-control"
+                   id="cost" name="cost" required type="text"/>
+            <div *ngIf="f.submitted && cost.invalid" class="invalid-feedback">
+                <div *ngIf="cost.errors.required">Cost is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_quantity" for="quantity">Quantity: </label>
+            <input #quantity="ngModel" [(ngModel)]="partCreateModel.quantity" [ngClass]="{ 'is-invalid': f.submitted && quantity.invalid }"
+                   class="form-control part_create__input_quantity"
+                   id="quantity" name="quantity" required type="text"/>
+            <div *ngIf="f.submitted && quantity.invalid" class="invalid-feedback">
+                <div *ngIf="quantity.errors.required">Quantity is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_description" for="description">Description: </label>
+            <input #description="ngModel" [(ngModel)]="partCreateModel.description" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"
+                   class="form-control part_create__input_description"
+                   id="description" name="description" type="text" required />
+            <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+                <div *ngIf="description.errors.required">Description is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_url" for="url">Url: </label>
+            <input #url="ngModel" [(ngModel)]="partCreateModel.url" [ngClass]="{ 'is-invalid': f.submitted && url.invalid }" class="form-control part_create__input_url"
+                   id="url" name="url"type="text" required />
+            <div *ngIf="f.submitted && url.invalid" class="invalid-feedback">
+                <div *ngIf="url.errors.required">Url is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_order_date" for="orderDate">Order Date: </label>
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="orderDate" [(ngModel)]="model" ngbDatepicker #orderDate="ngbDatepicker" id="orderDate" required>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary fa fa-calendar" (click)="orderDate.toggle()" type="button"></button>
+            </div>
+<!--
+            <div *ngIf="f.submitted && orderDate.invalid" class="invalid-feedback">
+                <div *ngIf="orderDate.errors.required">Order date is not in the correct format</div>
+            </div>
+-->
+        </div>
+        <div class="form-group">
+            <label class="part_create__label_orderId" for="orderId">Order ID: </label>
+            <input #orderId="ngModel" [(ngModel)]="partCreateModel.orderId" [ngClass]="{ 'is-invalid': f.submitted && orderId.invalid }"
+                   class="form-control part_create__input_orderId"
+                   id="orderId" name="orderId" type="text"/>
+            <div *ngIf="f.submitted && orderId.invalid" class="invalid-feedback">
+                <div *ngIf="orderId.errors.required">Order ID is not in the correct format</div>
+            </div>
+        </div>
+        <button class="btn btn-primary button__save">Save</button>
+    </form>
+</div>

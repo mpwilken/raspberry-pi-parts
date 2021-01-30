@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %X{cf.space_name} %X{cf.application_name} %clr(${LOG_LEVEL_PATTERN:-%5p}) - %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{mdc} %m %n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <!--
+        <springProfile name="prod,stg,uat,sb,sa,dr,demo">
+            <property name="CONSOLE_LOG_PATTERN"
+                      value="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %X{cf.space_name} %X{cf.application_name} %clr(${LOG_LEVEL_PATTERN:-%5p}) - %clr(%-40.40logger{39}){cyan} %clr(:){faint} %X{mdc} %m %n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+            <property name="FILE_LOG_PATTERN"
+                      value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } - [%t] %-40.40logger{39} : %m %n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+        </springProfile>
+    -->
+    <springProfile name="h2">
+        <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="TRACE" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+        <logger name="com.zaxxer.hikari.pool.PoolBase" level="error" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+    </springProfile>
+    <springProfile name="!h2">
+        <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="INFO" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+    </springProfile>
+    <!--
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="TRACE"
+            additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    -->
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

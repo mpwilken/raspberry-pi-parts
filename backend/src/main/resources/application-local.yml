@@ -1,0 +1,30 @@
+spring:
+    datasource:
+        hikari:
+            jdbc-url: jdbc:h2:mem:parts;DB_CLOSE_DELAY=-1
+#            jdbc-url: jdbc:h2:tcp://localhost/~/parts;DB_CLOSE_ON_EXIT=FALSE # this is for using H2 locally running outside app
+            username: sa
+            password:
+            connection-test-query: select 1
+            maximum-pool-size: 10
+            minimum-idle: 300000
+
+    jpa:
+        hibernate.ddl-auto: none
+        properties:
+            hibernate:
+                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+    flyway:
+        out-of-order: true
+        enabled: true
+        checkLocation: true
+        schemas: PUBLIC
+        locations: classpath:/local/db/migration
+        validate-on-migrate: true
+        baseline-on-migrate: true
+    h2:
+        console:
+            path: /h2
+            enabled: true

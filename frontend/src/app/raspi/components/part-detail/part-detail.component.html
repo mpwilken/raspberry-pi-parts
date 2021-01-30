@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="part-heading">Parts Detail</div>
+    <a [queryParams]="{page: currentPage, search: search}" [routerLink]="['/parts/list']" href="">back</a>
+    <div class="part-detail__img">
+        <img *ngIf="imageSrc !== undefined" [src]="imageSrc" alt="part" class="c" height="300px">
+    </div>
+</div>

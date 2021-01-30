@@ -1,0 +1,19 @@
+.part-list__table {
+    border-radius: 5px;
+    height: 35em;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.table_parts {
+    overflow-y: scroll;
+    height: 30em;
+}
+
+.part-list__table-body tr {
+    cursor: pointer;
+}
+
+ngb-pagination {
+    margin-top: 1em;
+}

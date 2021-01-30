@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light header">
+    <a class="navbar-brand" routerLink="/">
+        <span class="navbar-logo"></span> {{ title }}
+    </a>
+    <button aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navlinks" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navlinks">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a (click)="clear()" class="nav-link" href="#" routerLink="/parts/list" routerLinkActive="active">Listing <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a (click)="clear()" class="nav-link" href="#" routerLink="/parts/create" routerLinkActive="active">Create</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input [(ngModel)]="searchParams" aria-label="Search" class="form-control mr-sm-2 header-search__input" name="search" placeholder="Search" type="search">
+            <button (click)="search()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

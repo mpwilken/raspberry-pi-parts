@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="part-heading">Parts Listing</div>
+    <div class="table-responsive table_parts">
+        <table class="table table-bordered table-fixed table-striped part-list__table">
+            <thead class="part-list__table-header">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody class="part-list__table-body">
+            <tr *ngFor="let part of partsList" [queryParams]="{page: page, search: search}" [routerLink]="['/parts/detail', part.id]">
+                <th scope="row">{{part.name}}</th>
+                <td>{{part.cost}}</td>
+                <td>{{part.quantity}}</td>
+                <td>{{part.shortDescription}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center pagination-nav">
+        <ngb-pagination (pageChange)="changePage()" [(page)]="page" [collectionSize]="totalItems" [maxSize]="4" [pageSize]="pageSize"
+                        [rotate]="true" aria-label="Default pagination">
+            <ng-template ngbPaginationPrevious>Prev</ng-template>
+            <ng-template ngbPaginationNext>Next</ng-template>
+        </ngb-pagination>
+    </div>
+</div>
+
