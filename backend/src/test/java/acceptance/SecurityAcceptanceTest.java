@@ -59,7 +59,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     "app.security.temporary.username=joe",
     "app.security.temporary.password=password",
 })
-@ActiveProfiles("test")
+@ActiveProfiles({"test", "credentials"})
 @Slf4j
 class SecurityAcceptanceTest {
 

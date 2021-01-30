@@ -31,6 +31,14 @@
         <imgdir>${project.basedir}</imgdir>
         <maven.minimum.version>3.3.9</maven.minimum.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit.ssh.jsch</artifactId>
+            <version>5.10.0.202012080955-r</version>
+            <scope>optional</scope>
+        </dependency>
+    </dependencies>
     <build>
         <pluginManagement>
             <plugins>
@@ -38,6 +46,13 @@
                     <groupId>pl.project13.maven</groupId>
                     <artifactId>git-commit-id-plugin</artifactId>
                     <version>4.0.3</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.eclipse.jgit</groupId>
+                            <artifactId>org.eclipse.jgit.ssh.jsch</artifactId>
+                            <version>5.10.0.202012080955-r</version>
+                        </dependency>
+                    </dependencies>
                     <executions>
                         <execution>
                             <id>get-the-git-infos</id>

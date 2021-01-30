@@ -260,7 +260,7 @@
                         <include>**/*AcceptanceTest</include>
                     </includes>
                     <systemPropertyVariables>
-                        <spring.profiles.active>test</spring.profiles.active>
+                        <spring.profiles.active>test, credentials</spring.profiles.active>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -319,7 +319,7 @@
                         </executions>
                         <configuration>
                             <profiles>
-                                <profile>h2</profile>
+                                <profile>h2,credentials</profile>
                             </profiles>
                         </configuration>
                     </plugin>
