@@ -1,4 +1,4 @@
-import {async, TestBed} from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import {PartService} from './part.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
@@ -24,7 +24,7 @@ describe('PartService,', () => {
     const part = new Part('name', 1.23, 1, 'shorter description', 'description that is much longer',
         'url', 'orderDate', 'orderId');
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         spyHttpClient = jasmine.createSpyObj('HttpClient', ['post', 'get']);
 
         TestBed.configureTestingModule({

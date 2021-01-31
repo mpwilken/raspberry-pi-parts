@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
 import {FormsModule} from '@angular/forms';
 import {ToastrModule} from 'ngx-toastr';
@@ -11,7 +11,7 @@ describe('HeaderComponent', () => {
     let fixture: ComponentFixture<HeaderComponent>;
     let spyMessageService: any;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         spyMessageService = jasmine.createSpyObj('MessageService', ['sendMessage']);
 
         TestBed.configureTestingModule({

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {PartComponent} from './part.component';
 import {PartService} from '../../services';
@@ -11,7 +11,7 @@ describe('PartComponent', () => {
     let component: PartComponent;
     let fixture: ComponentFixture<PartComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         partServiceMock = createStub(PartService);
         spyOn(partServiceMock, 'save').and.stub();
 

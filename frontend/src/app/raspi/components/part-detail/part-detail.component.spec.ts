@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {PartDetailComponent} from './part-detail.component';
 import {of} from 'rxjs';
@@ -21,7 +21,7 @@ describe('PartDetailComponent', () => {
         })
     };
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         spyPartService = jasmine.createSpyObj('PartService', ['findImagesByPartId']);
 
         TestBed.configureTestingModule({

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {PartListComponent} from './part-list.component';
 import {PartService} from '../../services';
@@ -40,7 +40,7 @@ describe('PartListComponent', () => {
         ];
     const data = {content: parts, totalElements: 10};
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         spyPartService = jasmine.createSpyObj('PartService', ['findAllByPage', 'findByCriteria']);
         stubMessageService = jasmine.createSpyObj('MessageService', ['getMessage']);
 
@@ -61,7 +61,7 @@ describe('PartListComponent', () => {
             .compileComponents();
     }));
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         fixture = TestBed.createComponent(PartListComponent);
         subject = fixture.componentInstance;
     }));

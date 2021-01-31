@@ -4,13 +4,13 @@ import {AuthGuardService} from './raspi/components/security/auth-guard.service';
 import {LoginComponent} from './raspi/components/security/login/login.component';
 
 const routes: Routes = [
-    {path: '', canActivate: [AuthGuardService], redirectTo: 'parts', pathMatch: 'full'},
+    { path: '', redirectTo: 'parts', pathMatch: 'full' },
     {path: 'parts', canActivate: [AuthGuardService], loadChildren: () => import('./raspi/raspi.module').then(m => m.RaspiModule)},
     {path: 'signin', component: LoginComponent}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
