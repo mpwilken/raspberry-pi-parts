@@ -15,9 +15,9 @@ brew install scala
  
 ## Configure proxy for browser 
 
-![proxy](./docs/gatling-recording-proxy1.png)
+![proxy](../docs/gatling-recording-proxy1.png)
 
-![proxy](./docs/gatling-recording-proxy2.png)
+![proxy](../docs/gatling-recording-proxy2.png)
 
 ## Add host to /etc/hosts
 
@@ -33,7 +33,7 @@ java -Dserver.address=parts -Dspring.profiles.active=h2 -jar backend/target/part
 
  Start the recorder with the following settings
 
-![gatling](./docs/gatling-recording.png)
+![gatling](../docs/gatling-recording.png)
 
  Open browser to [here](http://parts:8080) and start using the application
  
