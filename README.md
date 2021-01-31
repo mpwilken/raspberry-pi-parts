@@ -1,3 +1,9 @@
+# Raspberry Pi Parts
+
+ This is a learning application for me that incorporates a variety of concepts.  It uses a very rudimentary
+UI (I am not a designer) and a Spring Boot backend.  As I learn more and apply concepts I strive to keep
+the tech stack up-to-date.
+
 # Frontend
 
  [Resources](#resources)
@@ -32,15 +38,28 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+# Backend
+
 ## Running from command line
 
- Start the backend
+ Start the application using an in-memory database.
  
  ```bash
 java -Dspring.profiles.active=h2,credentials -jar backend/target/parts-backend-?.?.?-SNAPSHOT.jar
  ```
 
- Then start the frontend
+ Open [browser](http://localhost:8080) and log in with whatever principal/credentials you configured the 
+backend with (see [security](#security) below.).
+
+ Or start them independently with the backend...
+
+ ```bash
+cd backend
+../mvnw -Dspring.profiles.active=h2,credentials spring-boot:run
+ ```
+
+ Then start the frontend.  Be careful which url you open either localhost:4200 or localhost:8080, it will
+behave differently.  Think about. ;)
  
  ```bash
 cd frontend

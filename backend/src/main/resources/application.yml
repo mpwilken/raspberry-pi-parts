@@ -7,16 +7,14 @@ app.security:
       - http://localhost:4200
   urls:
     unprotected:
-#      - "/**"
+      - "/"
+      - "/*.js"
+      - "/*.css"
+      - "ui/**"
+      - "/signin"
+      - "/login"
       - "/api/version"
       - "/favicon.ico"
-      - "/login"
-      - "/main*"
-      - "/polyfills*"
-      - "/runtime*"
-      - "/scripts*"
-      - "/styles*"
-      - "/ui/**"
 info.version: @project.version@
 management:
   endpoint.health.show-details: always
@@ -27,9 +25,9 @@ management:
     # Threshold after which files are written to disk.
     file-size-threshold: 2KB
     # Max file size.
-    max-file-size: 200MB
+    max-file-size: 5MB
     # Max Request Size
-    max-request-size: 215MB
+    max-request-size: 10MB
 spring:
   application.name: Raspberri Pi Parts
   data.rest.base-path: /api
