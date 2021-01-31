@@ -4,9 +4,9 @@
 UI (I am not a designer) and a Spring Boot backend.  As I learn more and apply concepts I strive to keep
 the tech stack up-to-date.
 
-# Frontend
+ * [Resources](#resources)
 
- [Resources](#resources)
+# Frontend
 
 ## Keep The System Current (KTSC)
 
