@@ -5,7 +5,7 @@
 
 ## Install Scala
 
- ``` 
+ ```bash 
 brew install scala
  ```
 
@@ -21,13 +21,15 @@ brew install scala
 
 ## Add host to /etc/hosts
 
+ ```bash
 echo $(ipconfig getifaddr en0)" parts" | sudo tee -a /etc/hosts
+ ```
 
 ## Record tests
 
  Start the application
  
- ``` 
+ ```bash
 java -Dserver.address=parts -Dspring.profiles.active=h2 -jar backend/target/parts-backend-*.*.*-SNAPSHOT.jar
  ```
 
@@ -39,26 +41,26 @@ java -Dserver.address=parts -Dspring.profiles.active=h2 -jar backend/target/part
  
 ## Run tests
 
- ``` 
+ ```bash
 cd gatling
 ../mvnw -Psimulation test
  ```
  
  You can view the reports after it's finished by opening the index.html file output after the run
  
- ``` 
+ ```bash
 open $(find target/gatling -regex '.*usersimulation.*index.html' | sort -n | tail -1)
  ```
 
  or all in one command
  
- ```
+ ```bash
 ../mvnw -Psimulation clean test && open $(find target/gatling -regex '.*usersimulation.*index.html' | sort -n | tail -1)
  ```
 
  Here is a sample during the run
  
- ``` 
+ ```bash
 Simulation us.thirdbase.simulations.UserSimulation started...
 
 ================================================================================
@@ -119,7 +121,7 @@ Simulation us.thirdbase.simulations.UserSimulation started...
 
  The latest version as of this writing is below and it can run up to jdk 11.   
  
-  ``` 
+  ```xml
 <gatling.version>3.2.1</gatling.version>
 <scala-maven-plugin.version>4.2.0</scala-maven-plugin.version>
 <gatling-maven-plugin.version>3.0.3</gatling-maven-plugin.version>
