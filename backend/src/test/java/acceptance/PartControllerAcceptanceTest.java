@@ -111,7 +111,7 @@ class PartControllerAcceptanceTest {
     void findAllBySpecification() throws Exception {
         mockMvc.perform(get("/api/parts/search").param("search", "name:*adapter*"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(9))
+            .andExpect(jsonPath("$.length()").value(10))
             .andExpect(jsonPath("$[0].name", containsString("5V 2.5A AC Adapter")))
         ;
     }
@@ -123,7 +123,7 @@ class PartControllerAcceptanceTest {
             .param("page", "1")
             .param("size", "7"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.content.length()").value(2))
+            .andExpect(jsonPath("$.content.length()").value(3))
         ;
     }
 

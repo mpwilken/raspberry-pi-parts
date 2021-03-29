@@ -425,6 +425,32 @@ rxjs                            6.5.4
 typescript                      4.0.5
  ```
 
+# Docker 
+
+ Build image 
+
+ ```bash
+docker build -t parts .
+ ```
+
+ Tag image
+
+ ```bash
+docker tag parts localhost:5000/parts
+ ```
+
+ Push image
+
+ ```bash
+docker push localhost:5000/parts
+ ```
+
+ Run image
+
+ ```bash
+docker run -it -p 8080:8080 parts /bin/bash
+ ```
+
 # Resources
 
  * [Security of JSON Web Tokens (JWT)](https://cyberpolygon.com/materials/security-of-json-web-tokens-jwt/)

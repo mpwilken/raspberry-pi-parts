@@ -25,12 +25,12 @@ describe('View parts,', () => {
             page = await new PartListPage();
             partsList = await page.getPartsList();
 
-            expect(await partsList.getRows().count()).toEqual(1);
-            expect(await partsList.getRow(0).getName().getText()).toBe('5V 1 Channel Relay Module');
-            expect(await partsList.getRow(0).getCost().getText()).toBe('2.27');
-            expect(await partsList.getRow(0).getQuantity().getText()).toBe('3');
+            expect(await partsList.getRows().count()).toEqual(4);
+            expect(await partsList.getRow(0).getName().getText()).toBe('3v Relay Board Power Switch');
+            expect(await partsList.getRow(0).getCost().getText()).toBe('14.99');
+            expect(await partsList.getRow(0).getQuantity().getText()).toBe('1');
             expect(await partsList.getRow(0).getDescription().getText()).toBe(
-                '5V Indicator Light LED One 1 Channel Relay Module For Arduino ARM PIC AVR DSP');
+                '3v Relay Board Power Switch Relay Module 1 Channel Optocoupler');
         });
     });
 });

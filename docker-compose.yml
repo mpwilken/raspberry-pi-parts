@@ -1,13 +1,15 @@
 version: '2.0'
 services:
 
-  dbpostgres:
-    image: postgres
-    volumes:
-      - ./images:/data
+  parts:
+    container_name: parts
+    image: parts
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
-      - "5432:5432"
+      - "8084:8080"
+    volumes:
+      - /Users/mwilken/source/tutorials/parts/images:/opt/images
     environment:
-      POSTGRES_USER: parts_user
-      POSTGRES_PASSWORD: parts_password
-      POSTGRES_DB: parts
+      - "SPRING_PROFILES_ACTIVE=h2,credentials"

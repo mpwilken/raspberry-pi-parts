@@ -18,6 +18,6 @@ class ImageRepositoryTest {
     void viewImages() {
         List<Image> actual = subject.findAll();
 
-        assertThat(actual.size()).isEqualTo(63);
+        assertThat(actual.size()).isEqualTo(93);
     }
 }

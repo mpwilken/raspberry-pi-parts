@@ -10,7 +10,7 @@ app.security:
       - "/"
       - "/*.js"
       - "/*.css"
-      - "ui/**"
+      - "/ui/**"
       - "/signin"
       - "/login"
       - "/api/version"
@@ -31,3 +31,4 @@ management:
 spring:
   application.name: Raspberri Pi Parts
   data.rest.base-path: /api
+  flyway.placeholders.imgdir: ../images
